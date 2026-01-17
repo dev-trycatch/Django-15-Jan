@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+    {% block start %}
+    <!-- <h1>Home Page</h1>
+
+    <h3>{{name}}</h3>
+    <h3>{{age}}</h3>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis debitis placeat magnam iste reprehenderit possimus reiciendis architecto qui, tenetur illo unde quod accusamus sequi eum odit ut earum eaque doloribus.</p> -->
+
+    <h1>Student Data</h1>
+    <table border="1">
+        <thead>
+            <th>Sr.no</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Marks</th>
+            <th>Grade</th>
+            <th>View</th>
+        </thead>
+        <tbody>
+            {% for i in data %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ i.name }}</td>
+                <td>{{  i.email }}</td>
+                <td>{{i.marks}}</td>
+                <!-- <td {% if i.marks >= 50 %} style = 'background:green' {%else%} style = 'background:red' {% endif %} > -->
+                <td>
+                    {% if i.marks >= 50 %}
+                        Pass
+                    {% else %}
+                        Fail
+                    {% endif %}
+                </td>
+                <td ><a href="">Read More</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endblock %}

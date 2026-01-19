@@ -1,0 +1,43 @@
+from myapp.models import Student
+>>> stud = Student.objects.all()
+>>> stud
+
+Create 
+method1
+>>> stud1 = Student(name='viraj',age = 23,email='viraj@gmail.com')
+>>> stud1.save()
+
+method 2 
+Student.objects.create(name= 'sahil',age=23,email='sahil@gmail.com')
+
+method 3
+data= {"name":"ishan","age":25,"email":'ishan@gmail.com'}
+stud = Student(**data)
+stud.save()
+
+--- Read ---
+>>> stud = Student.objects.get(id=4)
+>>> stud
+>>> stud.email
+
+>>> stud = Student.objects.filter(id = 1)
+>>> stud
+<QuerySet [<Student: dev>]>
+>>> for i in stud:
+...     print(i.name)
+dev
+
+--- update ---
+Method 1
+>>> stud = Student.objects.get(id=1)
+>>> stud.age = 35
+>>> stud.nane = "Devesh"
+>>> stud.save()
+
+Method 2
+>>> stud1= Student.objects.filter(id = 1).update(name = "Devesh")
+
+--- Delete --  
+>>> stud = Student.objects.get(id=1).delete()
+>>> stud = Student.objects.filter(id=1).delete()
+>>> stud = Student.objects.all().delete()

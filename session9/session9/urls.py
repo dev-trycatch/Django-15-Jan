@@ -1,5 +1,5 @@
 """
-URL configuration for session7 project.
+URL configuration for session9 project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/6.0/topics/http/urls/
@@ -16,22 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from django.conf import settings
-from django.conf.urls.static import static
-from django.contrib.auth.views import LogoutView
-from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('blog.urls')),
-    
-    path('', TemplateView.as_view(template_name='index.html')),
-# urls.py
-    path('accounts/', include('allauth.urls')),
-
-    path('logout', LogoutView.as_view()),
-    path('auth/',include('django_googler.urls.default')),
+    path('', include('myapp.urls')),
 ]
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

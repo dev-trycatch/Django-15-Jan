@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit">
+    </form>
+
+
+    <h1>Category Data</h1>
+    <table border="1">
+        <thead>
+            <th>Id</th>
+            <th>Name</th>
+        </thead>
+        <tbody>
+            {% for cat in category%}
+                <tr>
+                    <td>{{cat.id}}</td>
+                    <td>{{cat.name}}</td>
+                </tr>
+            {% endfor%}
+        </tbody>
+    </table>
+</body>
+</html>

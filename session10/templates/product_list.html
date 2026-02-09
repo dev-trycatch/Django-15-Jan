@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit">
+    </form>
+
+
+    <h1>Category Data</h1>
+    <table border="1">
+        <thead>
+            <th>Id</th>
+            <th>Category</th>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+            {% for prod in products%}
+                <tr>
+                    <td>{{prod.id}}</td>
+                    <td>{{prod.category}}</td>
+                    <td>{{prod.title}}</td>
+                    <td>{{prod.content}}</td>
+                    <td><a href="{% url 'product_Update' prod.pk %}">Update</a> </td>
+                    <td><a href="{% url 'product_delete' prod.pk %}">Delete</a> </td>
+                </tr>
+            {% endfor%}
+        </tbody>
+    </table>
+</body>
+</html>
